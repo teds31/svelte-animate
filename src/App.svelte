@@ -1,10 +1,22 @@
 <script>
-	export let name;
+	import { fade } from 'svelte/transition'
+	export let name
+	let isReady = false
 </script>
 
+<!-- ===Animations===  -->
+<!-- Fade opacity 0 -1 -->
+<!-- Blur - opacity and blur  -->
+<!-- Fly - x and y along opacity  -->
+<!-- Slide - height  -->
+<!-- Scale - start: scale, opacity  -->
+<!-- Draw - draw svgs  -->
+
 <main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
+	{#if isReady}
+		<h1 transition:fade>Hello {name}!</h1>
+	{/if}
+	<button on:click={() => isReady = !isReady}>Fade</button>
 </main>
 
 <style>
